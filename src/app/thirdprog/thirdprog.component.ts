@@ -220,7 +220,7 @@ export class ThirdprogComponent implements OnInit{
             const lines: string[] = [];
             
             // Iterate through the words and group them into lines with two words each
-            for (let i = 0; i < words.length; i += 2) {
+            for (let i = 0; i < words.length; i += 4) {
               const line = [words[i]];  
               if (i + 1 < words.length) {
                 line.push(words[i + 1]);

@@ -10,7 +10,7 @@ export const labelColor:any=(chartOptionName:any,minMaxColor:string='#F1B547',de
       let color =[]; 
      for( let i = 0; i<array.length; i++){ 
       if ((array[i]===(min )) || array[i]===(max ) ) {
-       color.push(minMaxColor)// Max & Min label color 
+       color.push(minMaxColor) // Max & Min label color 
      } else {
        color.push(defaultColor); // Default label color 
      } 
@@ -33,3 +33,18 @@ export const labelColor:any=(chartOptionName:any,minMaxColor:string='#F1B547',de
     return '#fff'; // Add a return statement outside the loop for the default case
   };
 
+ export const selected = (clickedColumnIndex:number,chartLength:number,defaultColor:any,selectedColor:any) => {
+let color=[''] 
+ color.length=chartLength
+for(let i=0;i<color.length;i++){
+  color[i]= defaultColor[i]
+} 
+color[clickedColumnIndex]=selectedColor
+
+ console.log(color);
+ 
+    return color
+   } 
+function f(){
+
+}

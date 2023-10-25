@@ -11,7 +11,7 @@ import { Color, labelColor } from '../interface/ichart-color';
 export class Elfa2aEl3omryaComponent implements OnInit {
   ngOnInit(): void {
     if( this.chartOptions.dataLabels?.style?.colors){
-    this.chartOptions.dataLabels.style.colors =labelColor(this.chartOptions);
+    this.chartOptions.dataLabels.style.colors = labelColor(this.chartOptions);
   }
   if( this.chartOptions.dataLabels?.background?.foreColor){
     this.chartOptions.dataLabels.background.foreColor = Color(this.chartOptions);
@@ -25,6 +25,15 @@ export class Elfa2aEl3omryaComponent implements OnInit {
         offsetX: -40,
         type: 'bar',
         toolbar:{show: false},
+        // events: {
+        //   mounted: function(chartContext, config) {
+        //     const xAxisLabels = document.querySelectorAll('.apexcharts-xaxis-label text');
+    
+        //     xAxisLabels.forEach((label) => {
+        //       label.setAttribute('dy', '-10px'); // Adjust the value as needed
+        //     });
+        //   }
+        // }
     },
     grid: {
       // Customize the grid lines
@@ -32,11 +41,11 @@ export class Elfa2aEl3omryaComponent implements OnInit {
       strokeDashArray: 4,     // Length of dashes in the line
     },
     series: [{
-      data: [40.2, 72.6, 50, 88, 70, 38.5, 10]
+      data: [40.2, 72.6, 50, 88, 70, 38.5, 10,12,13,10,13]
     }],
     plotOptions: {
       bar: { 
-        columnWidth: '10.436px',
+        columnWidth: '9px',
         borderRadius: 5,
         borderRadiusApplication: "end",
         dataLabels: {
@@ -127,13 +136,17 @@ export class Elfa2aEl3omryaComponent implements OnInit {
     },
     xaxis: {
       categories: [
-        'اكبر من 50',
+        '+ 50',
         '50-41',
         '40-31',
         '30-21',
         '20-13',
         '12-6',
         '5-0',
+        '37',
+        '39',
+        '23',
+        '23'
       ],
       axisTicks: {
         show: false
@@ -143,13 +156,34 @@ export class Elfa2aEl3omryaComponent implements OnInit {
       },
     position: 'bottom',
       labels: {
-        rotate:0,
+        rotate: 50,
         style: {
           colors: '#03A677',
           fontFamily: 'Tajawal',
-          fontSize: "11px",
+          fontSize: "14px",
           fontWeight: 500,
-        }
+          cssClass: 'apexcharts-xaxis-label text'
+        },
+        // formatter: function (value: string | undefined): string[] {
+
+        //   // Split the sentence into words
+        //   const words = value?.split(' ');
+
+        //   // Initialize an array to hold the lines
+        //   const lines: string[] = [];
+        //   if (words?.length) {
+
+        //     for (let i = 0; i < words.length; i += 2) {
+        //       const line = [words[i]];
+        //       if (i + 1 < words.length) {
+        //         line.push(words[i + 1]);
+        //       }
+        //       lines.push(line.join(' '));
+        //     }
+        //   }
+
+        //   return lines;
+        // },
       }
     },
 

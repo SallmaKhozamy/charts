@@ -10,6 +10,7 @@ import { BasicLineComponent } from './basic-line/basic-line.component';
 import { Elfa2aEl3omryaComponent } from './elfa2a-el3omrya/elfa2a-el3omrya.component';
 import { FillPie3mlyatComponent } from './fill-pie3mlyat/fill-pie3mlyat.component';
 import { LinelineComponent } from './lineline/lineline.component';
+import { ShfafComponent } from './shfaf/shfaf.component';
 // import * as ApexCharts from 'apexcharts';
 // import{ApexCharts} from 'apexcharts'
 @NgModule({
@@ -21,7 +22,8 @@ import { LinelineComponent } from './lineline/lineline.component';
     BasicLineComponent,
     Elfa2aEl3omryaComponent,
     FillPie3mlyatComponent,
-    LinelineComponent
+    LinelineComponent,
+    ShfafComponent
   ],
   imports: [
     BrowserModule,
