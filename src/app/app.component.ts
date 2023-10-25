@@ -31,19 +31,17 @@ type ApexXAxis = {
 
 
 export class AppComponent {
-  NumberOfViolationsByAgeGroup = ['41 - 50','21 - 30','21 - 30','31 - 40','41 - 50']
+  AgeGroup = ['41 - 50','21 - 30','21 - 30','31 - 40','41 - 50']
   NumberOfViolationsByAgeGroupData = [100, 70, 50, 40, 60]
-  NumberOfViolationsByNationality = ['مغربي','فلبيني','هندي','سعودي','مصري','ليبي','اماراتي']
+  Nationality = ['مغربي','فلبيني','هندي','سعودي','مصري','ليبي','اماراتي']
   NumberOfViolationsByNationalityData = [100, 70, 50, 40, 60, 80, 50]
-  NumberOfViolationsByCity =  ['فيحاء','الدرعة','الدمام','الرياض','جدة','حائل','الباحة','عرر','نجران']
+  City =  ['فيحاء','الدرعة','الدمام','الرياض','جدة','حائل','الباحة','عرر','نجران']
   NumberOfViolationsByCityData = [100, 70, 50, 40, 60, 90, 60, 40, 70] 
   NumberOfViolationsAffectingPublicSafetyByCity = ['السير علي الطريق في اوقات غير المسموح بها السير','كسر أشاره المرور','القيادة علي سرعة عاليه و كسر قواعد المرور','عدم حمل رخص القيادة أثناء السير او القيادة','عدم الالتزام بحدود المسارات علي الطريق','استخدام الهاتف المحمول أثناء القياد','استخدام الهاتف المحمول أثناء القيادة']
   NumberOfViolationsAffectingPublicSafetyByCityData = [80, 70, 60, 90, 60, 40, 70]
-  TemporalDistributionOfIncidents = ['أكتوبر','أغسطس','يوليو','يونيو','مايو','ابريل','مارس','فبراير','يناير']
-  TemporalDistributionOfIncidentsData = [30, 70, 50, 40, 60, 40, 20, 90, 60]
-  IncidentsTemporalDistributionOfIncidents = ['أكتوبر','أغسطس','يوليو','يونيو','مايو','ابريل','مارس','فبراير','يناير']
+  Months = ['أكتوبر','أغسطس','يوليو','يونيو','مايو','ابريل','مارس','فبراير','يناير']
   IncidentsTemporalDistributionOfIncidentsData = [30, 70, 50, 40, 60, 40, 20, 90, 60]
-  TotalAccidents = ['حائل','الرياض','عسير','جازان','تبوك','مكة']
+  Region = ['حائل','الرياض','عسير','جازان','تبوك','مكة']
   TotalAccidentsData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
   chartOptions: ApexChart | any = {
       chart: {

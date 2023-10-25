@@ -54,13 +54,13 @@
 <div class="container">
   <div class="chart1">
     <h2>عدد المخالفات حسب الفئة العمرية</h2>
-    <app-shfaf [chartData]="NumberOfViolationsByAgeGroup" [yAxisData]="NumberOfViolationsByAgeGroupData" [chartHeight]="200" 
+    <app-shfaf [chartData]="AgeGroup" [yAxisData]="NumberOfViolationsByAgeGroupData" [chartHeight]="200" 
     columnWidth="33px" [borderRadius]=16 [colors]="['#CAEFD8']"selectedColor="#03A676"
     [dataLabelAppear]= false yAxisTitle="العدد" xAxisTitle="الفئة العمرية"></app-shfaf>
   </div>
   <div class="chart1">
     <h2>عدد المخالفات حسب الجنسية</h2>
-    <app-shfaf [chartData]="NumberOfViolationsByNationality" [yAxisData]="NumberOfViolationsByNationalityData"  
+    <app-shfaf [chartData]="Nationality" [yAxisData]="NumberOfViolationsByNationalityData"  
     columnWidth="15px" [borderRadius]=7 [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A"
     ></app-shfaf>
   </div>
@@ -68,13 +68,13 @@
 <div class="container">
   <div class="chart1">
     <h2>عدد المخالفات المؤثرة على السلامة العامة (حسب المدينة)</h2>
-    <app-shfaf [chartData]="NumberOfViolationsByCity" [yAxisData]="NumberOfViolationsByCityData"  
+    <app-shfaf [chartData]="City" [yAxisData]="NumberOfViolationsByCityData"  
     columnWidth="15px" [borderRadius]=7 [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A"
     ></app-shfaf>
   </div>
   <div class="chart1">
     <h2> الحوادث توزيع الحوادث الزمني</h2>
-    <app-shfaf [chartData]="IncidentsTemporalDistributionOfIncidents" [yAxisData]="IncidentsTemporalDistributionOfIncidentsData" nameOfSeries="عدد الحوادث"
+    <app-shfaf [chartData]="Months" [yAxisData]="IncidentsTemporalDistributionOfIncidentsData" nameOfSeries="عدد الحوادث"
     columnWidth="9px" [borderRadius]=4 borderRadiusApplication="end" [colors]="['#03A676', '#FDBE4A']" [isSelectedExecute]=false
     ></app-shfaf>
   </div>
@@ -90,9 +90,16 @@
 <div class="container">
   <div class="chart1">
     <h2>إجمالي الحوادث</h2>
-    <app-shfaf [chartData]="TotalAccidents" [yAxisData]="TotalAccidentsData"  
+    <app-shfaf [chartData]="Region" [yAxisData]="TotalAccidentsData"  
     columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" [colors]="['#03A676']" selectedColor="#FDBE4A"
     [xAxisBorder]=true [yAxisBorder]=true [colors]="['#DFDFDF']" selectedColor="#03A676" [dataLabelAppear]=true dataLabelColor="#55565A"
+    ></app-shfaf>
+  </div>
+  <div class="chart1">
+    <h2>عدد بلاغات سرقة اللوحات حسب المدينة </h2>
+    <app-shfaf [chartData]="Region" [yAxisData]="TotalAccidentsData"  
+    columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" [colors]="['#03A676']" selectedColor="#FDBE4A"
+    [xAxisBorder]=true [yAxisBorder]=true [colors]="['#DFDFDF']" selectedColor="#03A676" 
     ></app-shfaf>
   </div>
 </div>
