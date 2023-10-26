@@ -56,7 +56,7 @@
     <h2>عدد المخالفات حسب الفئة العمرية</h2>
     <app-shfaf [chartData]="AgeGroup" [yAxisData]="NumberOfViolationsByAgeGroupData" [chartHeight]="200" 
     columnWidth="33px" [borderRadius]=16 [colors]="['#CAEFD8']"selectedColor="#03A676"
-    [dataLabelAppear]= false yAxisTitle="العدد" xAxisTitle="الفئة العمرية"></app-shfaf>
+    [dataLabelAppear]= false  xAxisTitle="الفئة العمرية"></app-shfaf>
   </div>
   <div class="chart1">
     <h2>عدد المخالفات حسب الجنسية</h2>
@@ -67,7 +67,7 @@
 </div>
 <div class="container">
   <div class="chart1">
-    <h2>عدد المخالفات المؤثرة على السلامة العامة (حسب المدينة)</h2>
+    <h2>عدد المخالفات حسب المدينة</h2>
     <app-shfaf [chartData]="City" [yAxisData]="NumberOfViolationsByCityData"  
     columnWidth="15px" [borderRadius]=7 [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A"
     ></app-shfaf>
@@ -91,15 +91,83 @@
   <div class="chart1">
     <h2>إجمالي الحوادث</h2>
     <app-shfaf [chartData]="Region" [yAxisData]="TotalAccidentsData"  
-    columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" [colors]="['#03A676']" selectedColor="#FDBE4A"
+    columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" 
     [xAxisBorder]=true [yAxisBorder]=true [colors]="['#DFDFDF']" selectedColor="#03A676" [dataLabelAppear]=true dataLabelColor="#55565A"
+    gridColor="#F5F5F5" [gridXaxis]=true [gridDash]=0 [appearAllDataLabelInSelect]=true 
     ></app-shfaf>
   </div>
   <div class="chart1">
     <h2>عدد بلاغات سرقة اللوحات حسب المدينة </h2>
-    <app-shfaf [chartData]="Region" [yAxisData]="TotalAccidentsData"  
-    columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" [colors]="['#03A676']" selectedColor="#FDBE4A"
-    [xAxisBorder]=true [yAxisBorder]=true [colors]="['#DFDFDF']" selectedColor="#03A676" 
+    <app-shfaf [chartData]="Region" [yAxisData]="NumberOfPlateTheftReportsByCityData"  
+    columnWidth="15px" chartWidth="100%" chartHeight="270" [borderRadius]=7  [colors]="['#03A676']" selectedColor="#FDBE4A" [isSelectedDataLabelAppear]=true
+    dataLabelColor="#55565A"
     ></app-shfaf>
   </div>
 </div>
+
+<div class="container">
+  <div class="chart1">
+  <h2>عدد بلاغات فقدان اللوحات حسب المدينة </h2>
+  <app-shfaf [chartData]="Region" [yAxisData]="NumberOfReportsOfMissingPlatesByCityData"  
+  columnWidth="15px" chartWidth="100%" chartHeight="270" [borderRadius]=7  [colors]="['#03A676']" selectedColor="#FDBE4A" [isSelectedDataLabelAppear]=true
+  dataLabelColor="#55565A"
+  ></app-shfaf>
+</div>
+
+<div class="chart1">
+  <h2>عدد المركبات حسب المدينة </h2>
+  <app-shfaf [chartData]="Nationality" [yAxisData]="NumberOfViolationsByNationalityData"  
+  columnWidth="15px" [borderRadius]=7 [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A"
+  ></app-shfaf>
+</div>
+</div>
+
+<div class="container">
+  <div class="chart1">
+    <h2>عدد المركبات حسب ماركة المركبة </h2>
+    <app-shfaf [chartData]="type" [yAxisData]="TheNumberOfVehiclesAccordingToTheTypeOfCarData"  
+    columnWidth="30px" [borderRadius]=15 [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A" dataLabelColor="#353535"
+    [appearAllDataLabelInSelect]=true [dataLabelAppear]=true 
+    ></app-shfaf>
+  </div>
+  <div class="chart1">
+    <h2>عدد المركبات حسب حالة المركبة </h2>
+    <app-shfaf [chartData]="state" [yAxisData]="NumberOfVehiclesByVehicleBrandData"  
+    columnWidth="30px" [borderRadius]=15 [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A" dataLabelColor="#353535"
+    [appearAllDataLabelInSelect]=true [dataLabelAppear]=true 
+    ></app-shfaf>
+  </div>
+</div>
+
+<div class="container">
+  <div class="chart1">
+    <h2>بلاغات سرقة المركبات حسب المدينة </h2>
+    <app-shfaf [chartData]="City" [yAxisData]="NumberOfViolationsByCityData"  
+    columnWidth="15px" [borderRadius]=7 [colors]="['#03A676']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A" dataLabelColor="#353535"
+    ></app-shfaf>
+  </div>
+
+  <div class="chart1">
+    <h2>عدد رخص القيادة حسب الفئة العمرية</h2>
+    <app-shfaf [chartData]="AgeGroup" [yAxisData]="NumberOfDrivingLicensesByAgeGroupData" [chartHeight]="200" 
+    columnWidth="33px" [borderRadius]=16 [colors]="['#CAEFD8']"selectedColor="#03A676"
+    [dataLabelAppear]= false  xAxisTitle="الفئة العمرية"></app-shfaf>
+  </div>
+</div>
+
+<div class="container">
+  <div class="chart1">
+    <h2> عدد رخص القيادة حسب الجنسية</h2>
+    <app-shfaf [chartData]="Nationality" [yAxisData]="NumberOfDrivingLicensesByNationalityData"  
+    columnWidth="15px" [borderRadius]=7 [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A"
+    ></app-shfaf>
+  </div>
+
+
+</div>
+
+
+
+
+
+

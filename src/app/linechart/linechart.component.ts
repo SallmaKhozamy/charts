@@ -191,7 +191,6 @@ export class LinechartComponent {
             // cssClass?: string;
           }
         },
-        // enabled: true,
         labels: {
           formatter: function (value: any) {
             // Customize the y-axis label format here
@@ -204,8 +203,6 @@ export class LinechartComponent {
             fontWeight: '400',
           },
         },
-        // min:0,
-        // max: 10,
         tickAmount: 6,
       },
       {

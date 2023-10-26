@@ -43,6 +43,34 @@ export class AppComponent {
   IncidentsTemporalDistributionOfIncidentsData = [30, 70, 50, 40, 60, 40, 20, 90, 60]
   Region = ['حائل','الرياض','عسير','جازان','تبوك','مكة']
   TotalAccidentsData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
+  NumberOfReportsOfMissingPlatesByCityData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
+  NumberOfPlateTheftReportsByCityData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
+  type = ["اودي","مرسيدس","بي ام"]
+  TheNumberOfVehiclesAccordingToTheTypeOfCarData = [55.200, 155.200, 85.200]
+  state = ["منهية","سارية"]
+  NumberOfVehiclesByVehicleBrandData = [304.200, 204.200]
+  NumberOfDrivingLicensesByAgeGroupData = [100,80,70,60,50]
+  NumberOfDrivingLicensesByNationalityData = [90.200,100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
+  //  Sample data with days of the week, regions, and values
+  data = [
+   { day: "Monday", region: "Region A", value: 10 },
+   { day: "Tuesday", region: "Region B", value: 20 },
+   { day: "Wednesday", region: "Region C", value: 15 },
+   { day: "Thursday", region: "Region A", value: 25 },
+   { day: "Friday", region: "Region B", value: 30 },
+   { day: "Saturday", region: "Region C", value: 40 },
+   { day: "Sunday", region: "Region A", value: 35 },
+  ];
+
+  // Extract the days of the week for the y-axis labels
+  yLabels = this.data.map(item => item.day);
+
+  // Extract the regions for the x-axis labels
+  xLabels = [...new Set(this.data.map(item => item.region))]; // Use Set to get unique values
+
+  // Extract the values for data labels
+  dataValues = this.data.map(item => item.value);
+
   chartOptions: ApexChart | any = {
       chart: {
           height: 300,

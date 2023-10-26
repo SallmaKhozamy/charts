@@ -11,6 +11,7 @@ import { Elfa2aEl3omryaComponent } from './elfa2a-el3omrya/elfa2a-el3omrya.compo
 import { FillPie3mlyatComponent } from './fill-pie3mlyat/fill-pie3mlyat.component';
 import { LinelineComponent } from './lineline/lineline.component';
 import { ShfafComponent } from './shfaf/shfaf.component';
+import { TestComponent } from './test/test.component';
 // import * as ApexCharts from 'apexcharts';
 // import{ApexCharts} from 'apexcharts'
 @NgModule({
@@ -23,7 +24,8 @@ import { ShfafComponent } from './shfaf/shfaf.component';
     Elfa2aEl3omryaComponent,
     FillPie3mlyatComponent,
     LinelineComponent,
-    ShfafComponent
+    ShfafComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

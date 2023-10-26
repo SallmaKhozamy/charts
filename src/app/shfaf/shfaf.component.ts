@@ -29,6 +29,12 @@ export class ShfafComponent implements OnInit{
   @Input() isSelectedExecute:boolean = true
   @Input() xAxisBorder = false
   @Input() yAxisBorder = false
+  @Input() gridColor:string = '#DCDCDC'
+  @Input() gridDash:number = 5
+  @Input() gridXaxis:boolean = false
+  @Input() gridYaxis:boolean = true
+  @Input() xAxisType:"category" | "datetime" | "numeric" ='category'
+  @Input() appearAllDataLabelInSelect:boolean = false
   // @Input() dataLabelValue:string = 'عدد الحوادث'
   chartOptions!: ApexOptions; 
   ngOnInit(): void {
@@ -39,6 +45,7 @@ export class ShfafComponent implements OnInit{
         width: this.chartWidth,
         height: this.chartHeight,
         offsetX: -30,
+        parentHeightOffset:0,
         toolbar:{show: false},
         events: {
           click:(event, chartContext, config)=> {
@@ -56,11 +63,15 @@ export class ShfafComponent implements OnInit{
                 dataLabels: {
                   enabled: true,
                   formatter: (val: any, { seriesIndex, dataPointIndex }: any)=> {
+                   if(this.appearAllDataLabelInSelect){
+                    return  val.toFixed(3);
+                   }else{
                     if (dataPointIndex === selectedcolumn && this.isSelectedDataLabelAppear) {
                       return  val.toFixed(3); // Display the data label only for the clicked column
                     } else {
                       return ''; // Hide data labels for other columns
                     }
+                   }
                   }
                 }
               },false,false);
@@ -70,8 +81,9 @@ export class ShfafComponent implements OnInit{
       },
       series:[ 
         { name: this.nameOfSeries,
-          data:this.yAxisData}
+          data:this.yAxisData },
       ],
+
       labels: this.chartData,
       colors: this.colors,
       plotOptions:{
@@ -110,32 +122,36 @@ export class ShfafComponent implements OnInit{
        show: false,
       },
       xaxis: {
-        labels: {
-          formatter: function(value:  string):string[]
-          {
-          // Split the sentence into words
-          const words = value.split(' ');
-          // Initialize an array to hold the lines
-          const lines: string[] = [];
-          // Iterate through the words and group them into lines with three words each
-          for (let i = 0; i < words.length; i += 3) {
-          const line = [words[i]];
-          if (i + 1 < words.length) {
-            line.push(words[i + 1]);
-          }
-          if (i + 2 < words.length) {
-            line.push(words[i + 2]);
-          }
-          // if (i + 3 < words.length) {
-          //   line.push(words[i + 3]);
-          // }
-          // if (i + 4 < words.length) {
-          //   line.push(words[i + 4]);
-          // }
-          lines.push(line.join(' '));
-        }
-            return lines;
-           },
+        type:this.xAxisType,
+        labels: {    
+          trim: true,  
+          hideOverlappingLabels: false,
+          rotate: 0,
+        //   formatter: function(value:  string):string[]
+        //   {
+        //   // Split the sentence into words
+        //   const words = value.split(' ');
+        //   // Initialize an array to hold the lines
+        //   const lines: string[] = [];
+        //   // Iterate through the words and group them into lines with three words each
+        //   for (let i = 0; i < words.length; i += 3) {
+        //   const line = [words[i]];
+        //   if (i + 1 < words.length) {
+        //     line.push(words[i + 1]);
+        //   }
+        //   if (i + 2 < words.length) {
+        //     line.push(words[i + 2]);
+        //   }
+        //   // if (i + 3 < words.length) {
+        //   //   line.push(words[i + 3]);
+        //   // }
+        //   // if (i + 4 < words.length) {
+        //   //   line.push(words[i + 4]);
+        //   // }
+        //   lines.push(line.join(' '));
+        // }
+        //     return lines;
+        //    },
           style: {
             colors: ['#292D30'],
             fontFamily:'Tajawal',
@@ -143,7 +159,6 @@ export class ShfafComponent implements OnInit{
             fontWeight: 400, 
           }
         },
-
        axisTicks: {
         show:false,
        },
@@ -155,9 +170,10 @@ export class ShfafComponent implements OnInit{
         offsetY: -1,
       },
       },
-      yaxis:{
+      yaxis:
+      {
         labels:{
-          offsetX: -25,
+          offsetX: -24,
           formatter: function (value: any) {
             return value + 'K';
           },
@@ -168,12 +184,13 @@ export class ShfafComponent implements OnInit{
             fontWeight: 400,
           }
         },
+        
         axisBorder: {
           show: this.yAxisBorder,
           color: '#D4D4D4',
           width: 1,
           offsetX: 22,
-          offsetY: -2,
+          offsetY:0,
           
       },
         tickAmount: 4,
@@ -190,10 +207,26 @@ export class ShfafComponent implements OnInit{
           }
         }
       },
+      
       grid:{
-        borderColor: '#E0E0E0', 
-        strokeDashArray: 5,   
+        borderColor: this.gridColor,
+        strokeDashArray: this.gridDash, 
+        xaxis:{
+          lines: {
+            show: this.gridXaxis,
+          }
+        },
+        yaxis:{
+          lines: {
+            show: this.gridYaxis,
+          }
+        },
+        padding: {
+          top: 0,
+          bottom: 0,
+        },  
       },
+
       dataLabels:{
        enabled:this.dataLabelAppear,
        formatter: function (val: any, opts: any) {
@@ -216,7 +249,7 @@ export class ShfafComponent implements OnInit{
          foreColor: '#fff',
          borderRadius: 7,
           borderColor:'',
-         padding: 10,
+         padding: 12,
          opacity: 1,
          dropShadow: {
            enabled: true,
@@ -229,18 +262,10 @@ export class ShfafComponent implements OnInit{
        },
    
       },
+ 
     }
   }
 
-  //  // Method to convert the colors value to the appropriate format
-  //    getColors():any {
-  //     if (typeof this.colors === 'string') {
-  //       // If colors is a string, convert it to an array with a single element
-  //       return this.colors;
-  //     } else {
-  //       // If colors is already an array, return it as is
-  //       return this.colors.push(this.colors[1]);
-  //     }
-  //   }
+
 }
 
