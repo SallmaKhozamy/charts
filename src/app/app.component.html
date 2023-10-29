@@ -16,13 +16,17 @@
     [title]="chartOptions.title"
   ></apx-chart>
 </div>
-<div class="chart2">
-    <app-progress></app-progress>
+
+<!-- donut chart -->
+<div class="chart2 donutChart">
+    <app-progress title="رخص القيادة" [labels]="DrivingLicensesLabels" [series]="DrivingLicensesSeries"> </app-progress>
   </div>
   </div>
 <!-- bayza -->
   <div class="chart3">
-    <app-thirdprog></app-thirdprog>
+    <app-thirdprog>
+
+    </app-thirdprog>
   </div>
  <!-- mixed -->
   <div class="chart3">
@@ -93,7 +97,7 @@
     <app-shfaf [chartData]="Region" [yAxisData]="TotalAccidentsData"  
     columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" 
     [xAxisBorder]=true [yAxisBorder]=true [colors]="['#DFDFDF']" selectedColor="#03A676" [dataLabelAppear]=true dataLabelColor="#55565A"
-    gridColor="#F5F5F5" [gridXaxis]=true [gridDash]=0 [appearAllDataLabelInSelect]=true 
+    gridColor="#F5F5F5" [gridXaxis]=true [gridDash]=0 [appearAllDataLabelInSelect]=true [isAppearDiffYAxis]= false [yAxisData2]="days"
     ></app-shfaf>
   </div>
   <div class="chart1">

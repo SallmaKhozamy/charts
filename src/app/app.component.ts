@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import {
   ApexChart,
@@ -30,7 +30,14 @@ type ApexXAxis = {
 
 
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+  ngOnInit(): void {
+  this.data.forEach(element => {
+    this.days.push(element.day)
+    this.Region.push(element.Region)
+    this.TotalAccidentsValue.push(element.TotalAccidentsValue)
+  });
+  }
   AgeGroup = ['41 - 50','21 - 30','21 - 30','31 - 40','41 - 50']
   NumberOfViolationsByAgeGroupData = [100, 70, 50, 40, 60]
   Nationality = ['مغربي','فلبيني','هندي','سعودي','مصري','ليبي','اماراتي']
@@ -41,7 +48,7 @@ export class AppComponent {
   NumberOfViolationsAffectingPublicSafetyByCityData = [80, 70, 60, 90, 60, 40, 70]
   Months = ['أكتوبر','أغسطس','يوليو','يونيو','مايو','ابريل','مارس','فبراير','يناير']
   IncidentsTemporalDistributionOfIncidentsData = [30, 70, 50, 40, 60, 40, 20, 90, 60]
-  Region = ['حائل','الرياض','عسير','جازان','تبوك','مكة']
+  // Region = ['حائل','الرياض','عسير','جازان','تبوك','مكة']
   TotalAccidentsData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
   NumberOfReportsOfMissingPlatesByCityData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
   NumberOfPlateTheftReportsByCityData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
@@ -51,25 +58,32 @@ export class AppComponent {
   NumberOfVehiclesByVehicleBrandData = [304.200, 204.200]
   NumberOfDrivingLicensesByAgeGroupData = [100,80,70,60,50]
   NumberOfDrivingLicensesByNationalityData = [90.200,100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
+  days:string[]= [];
+  TotalAccidentsValue:number[]=[];
+  Region:string[]=[];
+
   //  Sample data with days of the week, regions, and values
   data = [
-   { day: "Monday", region: "Region A", value: 10 },
-   { day: "Tuesday", region: "Region B", value: 20 },
-   { day: "Wednesday", region: "Region C", value: 15 },
-   { day: "Thursday", region: "Region A", value: 25 },
-   { day: "Friday", region: "Region B", value: 30 },
-   { day: "Saturday", region: "Region C", value: 40 },
-   { day: "Sunday", region: "Region A", value: 35 },
+   { day: "Monday", Region: "حائل", TotalAccidentsValue: 10 },
+   { day: "Tuesday", Region: "الرياض", TotalAccidentsValue: 20 },
+   { day: "Wednesday", Region: "عسير", TotalAccidentsValue: 15 },
+   { day: "Thursday", Region: "جازان", TotalAccidentsValue: 25 },
+   { day: "Friday", Region: "تبوك", TotalAccidentsValue: 30 },
+   { day: "Friday", Region: "مكة", TotalAccidentsValue: 30 },
   ];
 
   // Extract the days of the week for the y-axis labels
-  yLabels = this.data.map(item => item.day);
-
+  // yLabels = this.days
   // Extract the regions for the x-axis labels
-  xLabels = [...new Set(this.data.map(item => item.region))]; // Use Set to get unique values
+  // xLabels = [...new Set(this.data.map(item => item.Region))]; // Use Set to get unique values
 
   // Extract the values for data labels
-  dataValues = this.data.map(item => item.value);
+  // dataValues = this.data.map(item => item.TotalAccidentsValue);
+
+
+  //progress chart
+  DrivingLicensesLabels = [' ذكور', ' إناث']
+  DrivingLicensesSeries = [1232.450, 1832.450]
 
   chartOptions: ApexChart | any = {
       chart: {

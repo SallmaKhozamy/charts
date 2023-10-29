@@ -1,0 +1,23 @@
+.border {
+    width: 224px; 
+    height: 220px; 
+    background-color: transparent; 
+    border: 10px solid #F1F3F3;
+    border-radius: 50%; 
+    position: absolute;
+    left: 176px;
+    top: 54px;
+  }
+.donutChart {
+    position: relative;
+}
+.dashedBorder {
+    width: 130px; 
+    height: 130px; 
+    background-color: transparent; 
+    border: 1px dashed rgba(20, 40, 80, 0.20);
+    border-radius: 50%;
+    position: absolute;
+    left: 231px;
+    top: 107px;
+  }

@@ -18,6 +18,7 @@ export class ShfafComponent implements OnInit{
   @Input() borderRadiusApplication: "around" | "end" = 'around'
   @Input() colors:string[]= ['#03A677']
   @Input() yAxisData:number[] = []
+  @Input() yAxisData2:string[] = []
   @Input() selectedColor:string | string[] = this.colors
   @Input() chartHeight: string | number = 250
   @Input() chartWidth:number | string = '100%'
@@ -35,6 +36,7 @@ export class ShfafComponent implements OnInit{
   @Input() gridYaxis:boolean = true
   @Input() xAxisType:"category" | "datetime" | "numeric" ='category'
   @Input() appearAllDataLabelInSelect:boolean = false
+  @Input() isAppearDiffYAxis:boolean = true
   // @Input() dataLabelValue:string = 'عدد الحوادث'
   chartOptions!: ApexOptions; 
   ngOnInit(): void {
@@ -174,9 +176,14 @@ export class ShfafComponent implements OnInit{
       {
         labels:{
           offsetX: -24,
-          formatter: function (value: any) {
-            return value + 'K';
-          },
+          formatter: (value: any) => {
+              if(this.isAppearDiffYAxis){
+              return value + 'K';
+            }
+            //  return this.yAxisData2
+            return ''
+            },
+        
           style:{
             colors:['#8D9092'],
             fontFamily: 'Poppins',

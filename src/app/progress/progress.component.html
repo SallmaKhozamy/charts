@@ -1,5 +1,5 @@
-<div class="chart">
-    <apx-chart
+<div class="chart donutChart">
+  <apx-chart
     [series]="chartOptions.series!"
     [plotOptions]="chartOptions.plotOptions!"
     [labels]="chartOptions.labels!"
@@ -7,5 +7,10 @@
     [dataLabels]="chartOptions.dataLabels!"
     [colors]="chartOptions.colors!"
     [legend]="chartOptions.legend!"
-  ></apx-chart>
+    [stroke]="chartOptions.stroke!"
+    [tooltip]="chartOptions.tooltip!"
+  >
+</apx-chart>
+  <div class="border"></div>
+  <div class="dashedBorder"></div>
 </div>
