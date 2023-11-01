@@ -1,20 +1,25 @@
-<div class="chart">
-    <apx-chart 
+<div id="chart" style="border: 2px solid red;">
+  <apx-chart class="donut"
     [series]="chartOptions.series!"
+    [plotOptions]="chartOptions.plotOptions!"
+    [labels]="chartOptions.labels!"
     [chart]="chartOptions.chart!"
     [dataLabels]="chartOptions.dataLabels!"
-    [plotOptions]="chartOptions.plotOptions!"
-    [yaxis]="chartOptions.yaxis!"
-    [xaxis]="chartOptions.xaxis!"
-    [legend]="chartOptions.legend!"
     [colors]="chartOptions.colors!"
-    [grid]="chartOptions.grid!"
-    [fill]="chartOptions.fill!"
-    [title]="chartOptions.title!"
-    [labels]="chartOptions.labels!"
-    [markers]="chartOptions.markers!"
+    [legend]="chartOptions.legend!"
     [stroke]="chartOptions.stroke!"
     [tooltip]="chartOptions.tooltip!"
-    [states]="chartOptions.states!"
   ></apx-chart>
+  <!-- <div *ngIf="borderAppear" class="outsideBorder"></div>
+    <div *ngIf="borderAppear" class="insideBorder"></div> -->
+  <!-- start legend in buttom -->
+  <!-- <div class="legendContainer" style="border: 2px solid;">
+    <div class="legend" [class.flex-column]="twoLineAppear" *ngFor="let i =index; let label of labels">
+      <span [ngStyle]="{color: colors[i]}" style="font-size: 14px; font-family: Tajawal; font-weight: 500;" >  {{label}}  </span>  
+      <span style="color: #1E1E1E; font-size: 12px; font-family: Tajawal; font-weight: 500;"> {{series[i]}} </span> 
+    </div>
+   </div> -->
+   <!-- the end of the legend in the buttom -->
 </div>
+
+<!-- tailwind -->

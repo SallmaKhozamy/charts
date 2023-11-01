@@ -1,0 +1,40 @@
+#chart {
+  position: relative;
+  /* padding: 10px; */
+}
+/* .insideBorder {
+  width: 126px;  
+  height: 126px; 
+  background-color: transparent; 
+  border: 1px dashed rgba(20, 40, 80, 0.20);
+  border-radius: 50%;
+  position: absolute;
+  right: 55px;
+  top: 55px;
+}
+.outsideBorder {
+  position: absolute;
+  width: 212px; 
+   height: 212px; 
+  background-color: transparent; 
+  border: 10px solid #F1F3F3;
+  border-radius: 50%; 
+  top: 3px;
+  right: 3px;
+  left: 0px;
+  bottom: 0px;
+} */
+
+/* .legendContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 2px solid;
+  justify-content: space-between;
+  
+}
+
+.flex-column {
+   display: flex;
+   flex-direction: column;
+} */

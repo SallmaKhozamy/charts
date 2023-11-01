@@ -126,6 +126,7 @@ export class BasicLineComponent {
       highlightDataSeries: true,
   },
   },
+   
     // to make background dashed 
     grid: {
       borderColor: '#E0E0E0', // Color of the grid lines

@@ -18,14 +18,19 @@ import {
 })
 export class ProgressComponent implements OnInit{
 
-  @Input() labels:string[] = []
-  @Input() series:number[] = []
+  @Input() labels:string[] = ['ذكور','اناث']
+  @Input() series:number[] = [40, 60]
   @Input() title:string = ''
+  @Input() colors:string[] = ['#03A677','#FDBE4A'] 
   chartOptions!: ApexOptions; 
   ngOnInit(): void {
     this.chartOptions = {
       chart: {
         type: 'donut',
+        height:240,
+        // offsetY:50,
+        // offsetX:-55,
+        parentHeightOffset:0,
         animations: {
           enabled:false,
         }
@@ -33,7 +38,7 @@ export class ProgressComponent implements OnInit{
       series:this.series,
       labels: this.labels,
 
-      colors: ['#03A677','#FDBE4A'],
+      colors: this.colors,
   
       dataLabels: {
         enabled: true,
@@ -56,10 +61,7 @@ export class ProgressComponent implements OnInit{
     },
     plotOptions: {
       pie: {
-        offsetY: -65,
-        customScale: 0.5,
-        offsetX: -50,
-        // expandOnClick: false,
+        expandOnClick: false,
         donut: {
          labels: {
             show:true,
@@ -110,6 +112,7 @@ export class ProgressComponent implements OnInit{
     },
     legend:{
       show: true,
+      width: 70,
       position: 'left',
       fontFamily: 'Tajawal',
       fontWeight: 500,

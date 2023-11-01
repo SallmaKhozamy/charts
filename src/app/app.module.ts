@@ -12,6 +12,10 @@ import { FillPie3mlyatComponent } from './fill-pie3mlyat/fill-pie3mlyat.componen
 import { LinelineComponent } from './lineline/lineline.component';
 import { ShfafComponent } from './shfaf/shfaf.component';
 import { TestComponent } from './test/test.component';
+import { MixedChartComponent } from './mixed-chart/mixed-chart.component';
+import { DoubleChartComponent } from './double-chart/double-chart.component';
+import { LegendComponent } from './legend/legend.component';
+import { RadialBarComponent } from './radial-bar/radial-bar.component';
 // import * as ApexCharts from 'apexcharts';
 // import{ApexCharts} from 'apexcharts'
 @NgModule({
@@ -25,7 +29,11 @@ import { TestComponent } from './test/test.component';
     FillPie3mlyatComponent,
     LinelineComponent,
     ShfafComponent,
-    TestComponent
+    TestComponent,
+    MixedChartComponent,
+    DoubleChartComponent,
+    LegendComponent,
+    RadialBarComponent
   ],
   imports: [
     BrowserModule,

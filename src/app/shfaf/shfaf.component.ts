@@ -17,8 +17,8 @@ export class ShfafComponent implements OnInit{
   @Input() borderRadius: number = 6
   @Input() borderRadiusApplication: "around" | "end" = 'around'
   @Input() colors:string[]= ['#03A677']
-  @Input() yAxisData:number[] = []
-  @Input() yAxisData2:string[] = []
+  @Input() yAxisData:any= []
+  // @Input() yAxisData2:string[] = []
   @Input() selectedColor:string | string[] = this.colors
   @Input() chartHeight: string | number = 250
   @Input() chartWidth:number | string = '100%'
@@ -40,8 +40,9 @@ export class ShfafComponent implements OnInit{
   // @Input() dataLabelValue:string = 'عدد الحوادث'
   chartOptions!: ApexOptions; 
   ngOnInit(): void {
+    
     this.chartOptions  = {
-
+    
       chart:{
         type: 'bar',
         width: this.chartWidth,
@@ -51,11 +52,7 @@ export class ShfafComponent implements OnInit{
         toolbar:{show: false},
         events: {
           click:(event, chartContext, config)=> {
-          console.log(chartContext);
-          console.log(chartContext.w.globals.colors[1]);
           let selectedcolumn = config.dataPointIndex
-          console.log(selectedcolumn); 
-          console.log(chartContext.w.globals.colors[selectedcolumn])
           if(this.isSelectedExecute) [
             chartContext.updateOptions ({
               colors: selected(selectedcolumn,chartContext.w.globals.labels.length,this.colors,this.selectedColor)}, false, false) 
@@ -85,7 +82,7 @@ export class ShfafComponent implements OnInit{
         { name: this.nameOfSeries,
           data:this.yAxisData },
       ],
-
+     
       labels: this.chartData,
       colors: this.colors,
       plotOptions:{
@@ -103,13 +100,11 @@ export class ShfafComponent implements OnInit{
         normal: {
           filter: {
               type: 'none',
-              // value: 0,
           }
       },
       hover: {
           filter: {
-              type: 'none',
-              
+              type: 'none',     
           }
       },
         active: {
@@ -129,31 +124,7 @@ export class ShfafComponent implements OnInit{
           trim: true,  
           hideOverlappingLabels: false,
           rotate: 0,
-        //   formatter: function(value:  string):string[]
-        //   {
-        //   // Split the sentence into words
-        //   const words = value.split(' ');
-        //   // Initialize an array to hold the lines
-        //   const lines: string[] = [];
-        //   // Iterate through the words and group them into lines with three words each
-        //   for (let i = 0; i < words.length; i += 3) {
-        //   const line = [words[i]];
-        //   if (i + 1 < words.length) {
-        //     line.push(words[i + 1]);
-        //   }
-        //   if (i + 2 < words.length) {
-        //     line.push(words[i + 2]);
-        //   }
-        //   // if (i + 3 < words.length) {
-        //   //   line.push(words[i + 3]);
-        //   // }
-        //   // if (i + 4 < words.length) {
-        //   //   line.push(words[i + 4]);
-        //   // }
-        //   lines.push(line.join(' '));
-        // }
-        //     return lines;
-        //    },
+          
           style: {
             colors: ['#292D30'],
             fontFamily:'Tajawal',
@@ -180,8 +151,8 @@ export class ShfafComponent implements OnInit{
               if(this.isAppearDiffYAxis){
               return value + 'K';
             }
-            //  return this.yAxisData2
-            return ''
+             return this.yAxisData
+            
             },
         
           style:{
@@ -238,7 +209,7 @@ export class ShfafComponent implements OnInit{
        enabled:this.dataLabelAppear,
        formatter: function (val: any, opts: any) {
         return val.toFixed(3); // You can customize the label format here  
-        
+        // return 2
         },
        textAnchor: 'middle',
        distributed: true,

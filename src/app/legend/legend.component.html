@@ -1,0 +1,8 @@
+  <!-- start legend in buttom -->
+  <div class="legendContainer" style="border: 2px solid;">
+    <div class="legend" [class.flex-column]="twoLineAppear" *ngFor="let i =index; let label of labels">
+      <span [ngStyle]="{color: colors[i]}" style="font-size: 14px; font-family: Tajawal; font-weight: 500;" >  {{label}}  </span>  
+      <span style="color: #1E1E1E; font-size: 12px; font-family: Tajawal; font-weight: 500;"> {{series[i]}} </span> 
+    </div>
+   </div>
+   <!-- the end of the legend in the buttom -->

@@ -32,11 +32,11 @@ type ApexXAxis = {
 
 export class AppComponent implements OnInit{
   ngOnInit(): void {
-  this.data.forEach(element => {
-    this.days.push(element.day)
-    this.Region.push(element.Region)
-    this.TotalAccidentsValue.push(element.TotalAccidentsValue)
-  });
+  // this.data.forEach(element => {
+  //   this.days.push(element.day)
+  //   this.Region.push(element.Region)
+  //   this.TotalAccidentsValue.push(element.TotalAccidentsValue)
+  // });
   }
   AgeGroup = ['41 - 50','21 - 30','21 - 30','31 - 40','41 - 50']
   NumberOfViolationsByAgeGroupData = [100, 70, 50, 40, 60]
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit{
   NumberOfViolationsAffectingPublicSafetyByCityData = [80, 70, 60, 90, 60, 40, 70]
   Months = ['أكتوبر','أغسطس','يوليو','يونيو','مايو','ابريل','مارس','فبراير','يناير']
   IncidentsTemporalDistributionOfIncidentsData = [30, 70, 50, 40, 60, 40, 20, 90, 60]
-  // Region = ['حائل','الرياض','عسير','جازان','تبوك','مكة']
+  Region = ['حائل','الرياض','عسير','جازان','تبوك','مكة']
   TotalAccidentsData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
   NumberOfReportsOfMissingPlatesByCityData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
   NumberOfPlateTheftReportsByCityData = [100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
@@ -58,19 +58,20 @@ export class AppComponent implements OnInit{
   NumberOfVehiclesByVehicleBrandData = [304.200, 204.200]
   NumberOfDrivingLicensesByAgeGroupData = [100,80,70,60,50]
   NumberOfDrivingLicensesByNationalityData = [90.200,100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
-  days:string[]= [];
-  TotalAccidentsValue:number[]=[];
-  Region:string[]=[];
+  TotalAccidentsValue:number[]=[120.320,290.984,200,230.34,110,60.50];
+  days:string[]= ['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+  // TotalAccidentsValue:number[]=[];
+  // Region:string[]=[];
 
   //  Sample data with days of the week, regions, and values
-  data = [
-   { day: "Monday", Region: "حائل", TotalAccidentsValue: 10 },
-   { day: "Tuesday", Region: "الرياض", TotalAccidentsValue: 20 },
-   { day: "Wednesday", Region: "عسير", TotalAccidentsValue: 15 },
-   { day: "Thursday", Region: "جازان", TotalAccidentsValue: 25 },
-   { day: "Friday", Region: "تبوك", TotalAccidentsValue: 30 },
-   { day: "Friday", Region: "مكة", TotalAccidentsValue: 30 },
-  ];
+  // data = [
+  //  { day: "السبت", Region: "حائل", TotalAccidentsValue: 10 },
+  //  { day: "Tuesday", Region: "الرياض", TotalAccidentsValue: 20 },
+  //  { day: "Wednesday", Region: "عسير", TotalAccidentsValue: 15 },
+  //  { day: "Thursday", Region: "جازان", TotalAccidentsValue: 25 },
+  //  { day: "Friday", Region: "تبوك", TotalAccidentsValue: 30 },
+  //  { day: "Friday", Region: "مكة", TotalAccidentsValue: 30 },
+  // ];
 
   // Extract the days of the week for the y-axis labels
   // yLabels = this.days
@@ -82,8 +83,21 @@ export class AppComponent implements OnInit{
 
 
   //progress chart
-  DrivingLicensesLabels = [' ذكور', ' إناث']
+  Gender = [' ذكور', ' إناث']
   DrivingLicensesSeries = [1232.450, 1832.450]
+  NumberOfDrivingLicensesByGenderLabels = ['ذكر', 'أنثي']
+  NumberOfDrivingLicensesByGenderSeries = [100.960,20.90]
+  NumberOfViolationsByGender = [1232.450,1232.450]
+  NumberOfVehiclesAccordingToInspectionStatusLabel = ['تم فحصها','غير مفحوصة']
+  NumberOfVehiclesAccordingToInspectionStatusSeries = [1232.450, 1232.450]
+  
+  //fill pie chart
+  NumberOfOperationsAccordingToRegistrationType = ["خاص","نقل خاص","نقل عام","تصدير","دراجة ألية"]  
+  NumberOfOperationsAccordingToRegistrationTypeSeries = [32.505, 10.550, 7.48, 15.128, 11.562]
+  AChartShowingTheAgeGroupAndItsPercentageOfAccidents = ["اقل من 18", "19-30", "31-40", "41-50", "اكبر من 50"]
+  AChartShowingTheAgeGroupAndItsPercentageOfAccidentsSeries = [32.505, 10.550, 7.48, 15.128, 11.562]
+  RecordedViolationsLabel = ['ورقي','ساهر','باشر']
+  RecordedViolationsSeries = [1232.450, 1232.450, 1232.450]
 
   chartOptions: ApexChart | any = {
       chart: {

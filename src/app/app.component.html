@@ -18,14 +18,15 @@
 </div>
 
 <!-- donut chart -->
-<div class="chart2 donutChart">
-    <app-progress title="رخص القيادة" [labels]="DrivingLicensesLabels" [series]="DrivingLicensesSeries"> </app-progress>
   </div>
+
+  <div class="container">
+
   </div>
+
 <!-- bayza -->
   <div class="chart3">
     <app-thirdprog>
-
     </app-thirdprog>
   </div>
  <!-- mixed -->
@@ -46,7 +47,9 @@
 <div class="container">
   
  <div class="chart1">
-  <app-fill-pie3mlyat></app-fill-pie3mlyat>
+  <app-fill-pie3mlyat [series]="NumberOfOperationsAccordingToRegistrationTypeSeries" [labels]="NumberOfOperationsAccordingToRegistrationType"
+  [colors]="['#03A676','#FDBE4A','#353535','#027180','#035C65']">   
+  </app-fill-pie3mlyat>
  </div>
  <div class="chart1">
   <app-lineline></app-lineline>
@@ -94,10 +97,10 @@
 <div class="container">
   <div class="chart1">
     <h2>إجمالي الحوادث</h2>
-    <app-shfaf [chartData]="Region" [yAxisData]="TotalAccidentsData"  
+    <app-shfaf [chartData]="Region" [yAxisData]="TotalAccidentsValue"  
     columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" 
     [xAxisBorder]=true [yAxisBorder]=true [colors]="['#DFDFDF']" selectedColor="#03A676" [dataLabelAppear]=true dataLabelColor="#55565A"
-    gridColor="#F5F5F5" [gridXaxis]=true [gridDash]=0 [appearAllDataLabelInSelect]=true [isAppearDiffYAxis]= false [yAxisData2]="days"
+    gridColor="#F5F5F5" [gridXaxis]=true [gridDash]=0 [appearAllDataLabelInSelect]=true 
     ></app-shfaf>
   </div>
   <div class="chart1">
@@ -167,9 +170,56 @@
     ></app-shfaf>
   </div>
 
+ <!-- fillpie chart -->
+  <div class="chart1">
+    <app-fill-pie3mlyat [series]="AChartShowingTheAgeGroupAndItsPercentageOfAccidentsSeries" [labels]="AChartShowingTheAgeGroupAndItsPercentageOfAccidents"
+    [colors]="['#08AAD2','#027180','#FE6E73','#7D8998','#00D4FF']" legendPosition="right">   
+    </app-fill-pie3mlyat>
+   </div>
+</div>
+
+<!-- start of progress chart -->
+<div class="container">
+  <!-- رخص القيادة -->
+  <div style="border: 2px solid; ">
+    <app-test title="رخص القيادة" [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#03A677','#FDBE4A']"></app-test>
+    <app-legend [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#03A677','#FDBE4A']"></app-legend>   
+  </div>
+  <!-- عدد رخص القيادة حسب الجنس -->
+    <div style="border: 2px solid; ">
+      <app-test title="مجموع الرخص" [labels]="NumberOfDrivingLicensesByGenderLabels" [series]="NumberOfDrivingLicensesByGenderSeries" [colors]="['#00D4FF','#FE6E73']"
+        [isTotalNumberAppear]="true" totalSize="18px" totalWeight="500" [borderAppear]="false"></app-test>
+        <!-- <app-legend [labels]="NumberOfDrivingLicensesByGenderLabels" [series]="NumberOfDrivingLicensesByGenderSeries" [colors]="['#00D4FF','#FE6E73']"></app-legend>  -->
+      </div>
+</div>
+
+<div class="container">
+  <!-- عدد المخالفات حسب الجنس -->
+  <div style="border: 2px solid; ">
+    <app-test title="نسبة المخالفات " [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']"></app-test>
+    <app-legend [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']" [twoLineAppear]="true"></app-legend> 
+    </div>
+    <!-- المخالفات المسجله  -->
+    <div style="border: 2px solid; ">
+      <app-test title="نسبة المخالفات " [labels]="RecordedViolationsLabel" [series]="RecordedViolationsSeries" [colors]="['#03A676','#FDBE4A','#035C65']"
+         [borderAppear]="false"></app-test>
+         <app-legend [labels]="RecordedViolationsLabel" [series]="RecordedViolationsSeries" [colors]="['#03A676','#FDBE4A','#035C65']" [twoLineAppear]="true"></app-legend> 
+      </div>
+</div>
+
+<div class="container">
+  <div style="border: 2px solid;">
+    <app-test title="نسبة المخالفات " [labels]="NumberOfVehiclesAccordingToInspectionStatusLabel" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']"></app-test>
+    <app-legend [labels]="NumberOfVehiclesAccordingToInspectionStatusLabel" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']"></app-legend>  
+  </div>
 
 </div>
 
+
+ <!-- start of radialBar chart -->
+ <div style="border: 2px solid;">
+  <app-radial-bar></app-radial-bar>
+</div>
 
 
 

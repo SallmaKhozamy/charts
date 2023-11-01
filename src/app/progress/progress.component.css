@@ -21,3 +21,14 @@
     left: 231px;
     top: 107px;
   }
+  .legend {
+    padding: 10px; 
+  }
+  .legendContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 2px solid;
+    justify-content: space-between;
+    
+  }

@@ -44,7 +44,7 @@ export class LinechartComponent {
     },
     series: [
       {
-        name: "Website Blog",
+        name: "الايام",
         type: "column",
         data: [10.726, 9.726, 5.726, 7.726, 4.726, 3.726, 2.726, 3.641, 7.435, 5.881],
         
@@ -227,16 +227,5 @@ export class LinechartComponent {
 
   };
 
-  // colors: Function({value, dataPointIndex, w }){
-  //   // Define your custom color logic here
-  //   // You can access the value, dataPointIndex, and the chart instance (w)
-  
-  //   // Example: Make columns with values greater than 50 red, others green
-  //   if (value > 50) {
-  //     return '#FF5733'; // Red
-  //   } else {
-  //     return '#01A365'; // Green
-  //   }
-  // },
 }
 

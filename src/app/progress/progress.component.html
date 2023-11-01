@@ -13,4 +13,12 @@
 </apx-chart>
   <div class="border"></div>
   <div class="dashedBorder"></div>
+  <!-- start legend in buttom -->
+ <div class="legendContainer">
+  <div class="legend" *ngFor="let i =index; let label of labels">
+    <span> {{series[i]}} </span>  <span [ngStyle]="{color: colors[i]}"> {{label}} </span> 
+</div>
+ </div>
+ <!-- the end of the legend in the buttom -->
+
 </div>
