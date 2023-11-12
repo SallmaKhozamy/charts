@@ -37,7 +37,6 @@ export class ProgressComponent implements OnInit{
       },
       series:this.series,
       labels: this.labels,
-
       colors: this.colors,
   
       dataLabels: {

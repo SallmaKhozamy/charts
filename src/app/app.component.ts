@@ -59,7 +59,79 @@ export class AppComponent implements OnInit{
   NumberOfDrivingLicensesByAgeGroupData = [100,80,70,60,50]
   NumberOfDrivingLicensesByNationalityData = [90.200,100.320, 120.947, 36.210, 70.210, 28.120, 96.120]
   TotalAccidentsValue:number[]=[120.320,290.984,200,230.34,110,60.50];
-  days:string[]= ['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+  days:string[] = ['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+  saudi:number[] =  [100, 200, 90, 120, 161, 200]
+  nonSaudi:number[] = [76, 85, 101, 98, 87, 105]
+  years:number[] = [2015,2016,2017,2018,2019,2020,2021,2022,2023]
+  NumberOfDrivingLicensesByYearMale: number[] = [373,446,230,320,390,290,250,370,180]
+  NumberOfDrivingLicensesByYearFemale: number[] = [458,469,340,320,190,170,200,230,250] 
+  NumberOfOperationsByLocationSeries = [8.156, 7.746, 11.436, 3.756, 9.796, 6.251, 4.756, 5.123, 10.245]
+  NumberOfVehiclesByYearOfManufactureSeries = [10,23,30,40,15,28,34,19,22]
+ 
+  // test
+  NumberOfViolationsByAgeGroupData2 = [100, 70, 50, 40, 60,80]
+  NumberOfViolationsByAgeGroupData3 = [100, 70, 50, 40, 60,60,80]
+  
+  
+  // basicline
+  NumberOfAccidentsByTimeSeries:{name:string,data:number[]}[] = [
+    {
+   name:'العدد',
+   data: [0, 4, 10, 1, 9,5,9, 20 ,10, 5, 30, 10,13]
+    },
+  ]
+
+  NumberOfAccidentsByTimeLabel:string[] = ['01:00 AM','02:00 AM','03:00 AM','04:00 AM','05:00 AM','06:00 AM','07:00 AM','08:00 AM','09:00 AM','10:00 AM','11:00 AM',"12:00 PM","01:00 PM",]  
+
+  TotalAccidentsSeries:{name:string,data:number[]}[] = [
+    {
+   name:'ذكر',
+   data: [4, 10, 8,9,5,9]
+    },
+    {
+      name:'أنثي',
+      data: [1, 4, 5, 10,7, 20 ]
+       },
+  ]
+  
+  NumberOfViolationsByYearSeries:{name:string,data:number[]}[] = [
+    {
+   name:'العدد',
+   data: [100, 74, 85, 70, 78, 20 ,38,69,40]
+    }
+  ] 
+
+  NumberOfVehiclesAccordingToTheValidityOfValidDrivingLicensesSeries:{name:string,data:number[]}[] = [
+    {
+   name:'العدد',
+   data: [100, 74, 85, 70, 78, 20 ,38,69,40]
+    }
+  ]  
+
+  NumberOfLicensesByYearOfExpirationSeries:{name:string,data:number[]}[] = [
+    {
+   name:'العدد',
+   data: [100, 74, 85, 70, 78, 20 ,38,69,40]
+    }
+  ]  
+
+  ViolationsSeries:{name:string,data:number[]}[] = [
+    {
+   name:'العدد',
+   data: [100, 74, 85, 70, 78, 20 ,38,69,40]
+    }
+  ]  
+   
+  OperationType:string[] = ['تغيير لوحات المركبة','اصدار بدل تالف لوحتين عادية بدو','اصدار بدل تالف لوحتين طويلة بدو','اعطاء لوحة مركبة لا يوجد لها لوحات','اسقاط اللوحات من المركبة']
+  DependingOnTheTypeOfOperation:number[] = [ 20,40,30,10,50]
+
+
+  //RangeBar Chart 
+  NumberOfOperationsByLocationSeriesData:{x:string,y:number[]}[] = [
+    {x:this.City[0],y:[0,8.156]},{x:this.City[1],y:[0,7.746]},{x:this.City[3],y:[0,11.436]},{x:this.City[4],y:[0, 9.796]},{x:this.City[5],y:[0, 6.251]},{x:this.City[6],y:[0, 4.756]}
+  ]
+
+
   // TotalAccidentsValue:number[]=[];
   // Region:string[]=[];
 

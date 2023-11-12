@@ -18,6 +18,7 @@ export class RadialBarComponent implements OnInit{
         height: 350,
         type: "radialBar",
         parentHeightOffset:0,
+      
         sparkline:{
           enabled:true
         },
@@ -81,19 +82,17 @@ export class RadialBarComponent implements OnInit{
       stroke: {
         lineCap: "round"
       },
+      states: {
+        active: {
+          filter: { type:"none", }
+        }
+      },
       legend:{
         show: true,
         position: "right",
-        // horizontalAlign?: "left" | "center" | "right";
         fontSize: '13px',
         fontFamily: 'Tajawal',
         fontWeight: 700,
-        // width?: number;
-        // height?: number;
-        // offsetX?: number;
-        // offsetY?: number;
-        // textAnchor?: string;
-        // customLegendItems?: string[];
         labels: {
             colors: '#55565A',
         },
@@ -107,18 +106,6 @@ export class RadialBarComponent implements OnInit{
         itemMargin: {
           vertical: 5,
       },
-        // containerMargin?: {
-        //     left?: number;
-        //     top?: number;
-        // };
-        // onItemClick?: {
-        //     toggleDataSeries?: boolean;
-        // };
-        // onItemHover?: {
-        //     highlightDataSeries?: boolean;
-        // };
-        // formatter?(legendName: string, opts?: any): string;
-        // tooltipHoverFormatter?(legendName: string, opts?: any): string;
       },
       // fill: {
       //   type: "gradient",

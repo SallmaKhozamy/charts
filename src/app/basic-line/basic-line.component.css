@@ -1,3 +1,12 @@
 * {
     color: black !important;
 }
+::ng-deep .apexcharts-tooltip.apexcharts-active { 
+    
+  }  
+  ::ng-deep .apexcharts-tooltip-text {
+    font-size: 13px !important;
+    padding: 4px;
+    font-weight: 500;
+    font-family: 'Tajawal';
+  }

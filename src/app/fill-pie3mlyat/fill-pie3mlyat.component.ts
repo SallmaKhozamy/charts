@@ -55,6 +55,7 @@ export class FillPie3mlyatComponent implements OnInit{
   plotOptions: {
     pie: {
       // customScale: 0.6,
+      expandOnClick:false,
       dataLabels: {
         offset: -35, // Offset for labels
         // minAngleToShowLabel: 10, // Set a minimum angle to show labels (in degrees)
@@ -88,6 +89,13 @@ export class FillPie3mlyatComponent implements OnInit{
     },
     
 },
+states:{
+  active: {
+    filter: {
+      type: "none",
+    }
+  }
+}
 }
   }
 }

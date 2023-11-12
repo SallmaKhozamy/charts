@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-
+import { NgChartsModule } from 'ng2-charts';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ProgressComponent } from './progress/progress.component';
 import { ThirdprogComponent } from './thirdprog/thirdprog.component';
@@ -16,6 +16,9 @@ import { MixedChartComponent } from './mixed-chart/mixed-chart.component';
 import { DoubleChartComponent } from './double-chart/double-chart.component';
 import { LegendComponent } from './legend/legend.component';
 import { RadialBarComponent } from './radial-bar/radial-bar.component';
+import { ProgressJsChartComponent } from './progress-js-chart/progress-js-chart.component';
+import { RangeBarComponent } from './range-bar/range-bar.component';
+import { StatisticsVehiclesComponent } from './statistics-vehicles/statistics-vehicles.component';
 // import * as ApexCharts from 'apexcharts';
 // import{ApexCharts} from 'apexcharts'
 @NgModule({
@@ -33,11 +36,15 @@ import { RadialBarComponent } from './radial-bar/radial-bar.component';
     MixedChartComponent,
     DoubleChartComponent,
     LegendComponent,
-    RadialBarComponent
+    RadialBarComponent,
+    ProgressJsChartComponent,
+    RangeBarComponent,
+    StatisticsVehiclesComponent
   ],
   imports: [
     BrowserModule,
     NgApexchartsModule,
+    NgChartsModule,
     // ApexCharts
   ],
   providers: [],

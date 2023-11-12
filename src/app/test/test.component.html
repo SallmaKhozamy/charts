@@ -9,6 +9,8 @@
     [legend]="chartOptions.legend!"
     [stroke]="chartOptions.stroke!"
     [tooltip]="chartOptions.tooltip!"
+    [states]="chartOptions.states!"
+    (chartMounted)="onChartMounted($event)"
   ></apx-chart>
   <!-- <div *ngIf="borderAppear" class="outsideBorder"></div>
     <div *ngIf="borderAppear" class="insideBorder"></div> -->

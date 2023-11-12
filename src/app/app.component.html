@@ -36,7 +36,7 @@
 
   <div class="container">
   <!-- basic line -->
-  <div class="chart1">
+  <div style=" border: 2px solid;">
     <app-basic-line></app-basic-line>
   </div>
   <!-- elfa2a el3omrya -->
@@ -83,6 +83,7 @@
     <h2> الحوادث توزيع الحوادث الزمني</h2>
     <app-shfaf [chartData]="Months" [yAxisData]="IncidentsTemporalDistributionOfIncidentsData" nameOfSeries="عدد الحوادث"
     columnWidth="9px" [borderRadius]=4 borderRadiusApplication="end" [colors]="['#03A676', '#FDBE4A']" [isSelectedExecute]=false
+    [isSelectedDataLabelAppear]=true  [blueDataLabel]="false" [whiteDataLabel]="true"
     ></app-shfaf>
   </div>
 </div>
@@ -182,13 +183,13 @@
 <div class="container">
   <!-- رخص القيادة -->
   <div style="border: 2px solid; ">
-    <app-test title="رخص القيادة" [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#03A677','#FDBE4A']"></app-test>
+    <app-test title="رخص " secondTitle="القيادة" [isTotalNumberAppear]="true" [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#03A677','#FDBE4A']"></app-test>
     <app-legend [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#03A677','#FDBE4A']"></app-legend>   
   </div>
   <!-- عدد رخص القيادة حسب الجنس -->
     <div style="border: 2px solid; ">
       <app-test title="مجموع الرخص" [labels]="NumberOfDrivingLicensesByGenderLabels" [series]="NumberOfDrivingLicensesByGenderSeries" [colors]="['#00D4FF','#FE6E73']"
-        [isTotalNumberAppear]="true" totalSize="18px" totalWeight="500" [borderAppear]="false"></app-test>
+        [isTotalNumberAppear]="true" totalSize="18px" totalWeight="500" [borderAppear]="false" [titleTwoLineAppear]="false"></app-test>
         <!-- <app-legend [labels]="NumberOfDrivingLicensesByGenderLabels" [series]="NumberOfDrivingLicensesByGenderSeries" [colors]="['#00D4FF','#FE6E73']"></app-legend>  -->
       </div>
 </div>
@@ -196,20 +197,20 @@
 <div class="container">
   <!-- عدد المخالفات حسب الجنس -->
   <div style="border: 2px solid; ">
-    <app-test title="نسبة المخالفات " [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']"></app-test>
-    <app-legend [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']" [twoLineAppear]="true"></app-legend> 
+    <app-test title="نسبة" secondTitle="المخالفات" [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']" [isTotalNumberAppear]="true"></app-test>
+    <app-legend [labels]="Gender" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']" [twoLineAppear]="true" ></app-legend> 
     </div>
     <!-- المخالفات المسجله  -->
     <div style="border: 2px solid; ">
-      <app-test title="نسبة المخالفات " [labels]="RecordedViolationsLabel" [series]="RecordedViolationsSeries" [colors]="['#03A676','#FDBE4A','#035C65']"
-         [borderAppear]="false"></app-test>
+      <app-test title="نسبة" secondTitle="المخالفات" [labels]="RecordedViolationsLabel" [series]="RecordedViolationsSeries" [colors]="['#03A676','#FDBE4A','#035C65']"
+         [borderAppear]="false" [isTotalNumberAppear]="true"></app-test>
          <app-legend [labels]="RecordedViolationsLabel" [series]="RecordedViolationsSeries" [colors]="['#03A676','#FDBE4A','#035C65']" [twoLineAppear]="true"></app-legend> 
       </div>
 </div>
 
 <div class="container">
   <div style="border: 2px solid;">
-    <app-test title="نسبة المخالفات " [labels]="NumberOfVehiclesAccordingToInspectionStatusLabel" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']"></app-test>
+    <app-test title="نسبة" secondTitle="المخالفات" [isTotalNumberAppear]="true" [labels]="NumberOfVehiclesAccordingToInspectionStatusLabel" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']"></app-test>
     <app-legend [labels]="NumberOfVehiclesAccordingToInspectionStatusLabel" [series]="DrivingLicensesSeries" [colors]="['#2AC064','#FDBE4A']"></app-legend>  
   </div>
 
@@ -220,8 +221,122 @@
  <div style="border: 2px solid;">
   <app-radial-bar></app-radial-bar>
 </div>
+<div style="border: 2px solid;">
+   <app-double-chart [labels]="Region"></app-double-chart>
+</div>
 
 
+<div>
+  <app-progress></app-progress>
+  <app-test title="نسبة المخالفات " [labels]="RecordedViolationsLabel" [series]="RecordedViolationsSeries" [colors]="['#03A676','#FDBE4A','#035C65']"
+  [borderAppear]="false"></app-test>
+</div>
+
+<div class="container">
+  <div class="chart1">
+    <app-shfaf [chartData]="Region" [yAxisData]="NumberOfViolationsByAgeGroupData2"  
+    columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" 
+    [xAxisBorder]=true [yAxisBorder]=true [colors]="['#DFDFDF']" selectedColor="#03A676" [dataLabelAppear]=true dataLabelColor="#55565A"
+    gridColor="#F5F5F5" [gridXaxis]=true [gridDash]=0 [appearAllDataLabelInSelect]=true 
+    ></app-shfaf>
+  </div>
+
+<div class="chart1">
+  <app-shfaf [chartData]="days" [yAxisData]="NumberOfViolationsByAgeGroupData3"  
+  columnWidth="24px" chartWidth="100%" chartHeight="270" [borderRadius]=5 borderRadiusApplication="end" 
+  [xAxisBorder]=true [yAxisBorder]=true [colors]="['#DFDFDF']" selectedColor="#03A676" [dataLabelAppear]=true dataLabelColor="#55565A"
+  gridColor="#F5F5F5" [gridXaxis]=true [gridDash]=0 [appearAllDataLabelInSelect]=true 
+  ></app-shfaf>
+</div>
+
+    
+</div>
+
+<div style="border: 2px solid; width: 400px;">
+  <app-progress-js-chart> </app-progress-js-chart>
+</div>
+
+<!-- start of double column chart -->
+
+<div style="width: 600px; border: 2px solid;">
+  <app-double-chart [labels]="Region" [yAxisData]="saudi" [yAxisData2]="nonSaudi" [colors]="['#03A677','#FDBE4A']"
+  yAxisDataTitle="سعودي" yAxisData2Title="غير سعودي"></app-double-chart>
+</div>
+<div style="width: 600px; border: 2px solid;">
+  <app-double-chart [labels]="years" [yAxisData]="NumberOfDrivingLicensesByYearMale" [yAxisData2]="NumberOfDrivingLicensesByYearFemale" [colors]="['#FE6E73','#00D4FF']"
+  yAxisDataTitle="ذكر" yAxisData2Title="أنثي"></app-double-chart>
+</div>
+
+<!-- start of line chart -->
+<!-- عدد الحوادث حسب الوقت -->
+<div style="width: 500px; border: 2px solid;">
+  <app-basic-line [labels]="NumberOfAccidentsByTimeLabel" [series]="NumberOfAccidentsByTimeSeries" [colors]="['#2AC064']" [rotate]="-45" [xAxisOffsetY]="35" [xAxisOffsetX]="-15"></app-basic-line>
+</div>
+
+<!-- اجمال الحوادث -->
+<div style="width: 500px; border: 2px solid red;">
+  <app-basic-line [labels]="Region" [series]="TotalAccidentsSeries" [colors]="['#00D4FF','#FE6E73']"
+   [gridXaxis]="true" [gridYaxis]="true" [gridDash]="0" gridColor="#F5F5F5" [yAxisBorder]="true" [xAxisBorder]="true"></app-basic-line>
+</div>
+
+<!-- عدد المخالفات حسب السنة -->
+<div style="width: 500px; border: 2px solid">
+  <app-basic-line [labels]="years" [series]="NumberOfViolationsByYearSeries" [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true></app-basic-line>
+</div>
+
+<!-- عدد المركبات حسب صلاحية رخص السير (سارية)-->
+<div style="width: 500px; border: 2px solid">
+  <app-basic-line [labels]="years" [series]="NumberOfVehiclesAccordingToTheValidityOfValidDrivingLicensesSeries" [colors]="['#03A676']" [isSelectedDataLabelAppear]=true></app-basic-line>
+</div>
+
+<!-- عدد الرخص حسب سنة الإنتهاء -->
+<div style="width: 500px; border: 2px solid">
+  <app-basic-line [labels]="years" [series]="NumberOfLicensesByYearOfExpirationSeries" [colors]="['#03A676']" [isSelectedDataLabelAppear]=true></app-basic-line>
+</div>
+
+<!-- المخالفات -->
+<div style="width: 500px; border: 2px solid">
+  <app-basic-line [labels]="years" [series]="ViolationsSeries" [colors]="['#FDBE4A']" [markerColor]="['#027180']" 
+  [isSelectedDataLabelAppear]='true' ></app-basic-line>
+</div>
+
+<!-- حسب نوع العملية -->
+<div style="width: 500px; border: 2px solid">
+  <app-basic-line [labels]="years" [series]="ViolationsSeries" [colors]="['#FDBE4A']" [markerColor]="['#027180']" 
+  [isSelectedDataLabelAppear]='true' ></app-basic-line>
+</div>
+
+<!-- Mixed Chart -->
+<!-- عدد العمليات حسب الموقع -->
+<div style="width: 500px; border: 2px solid">
+  <app-mixed-chart ></app-mixed-chart>
+</div>
+
+<!-- RangeBar Chart -->
+<!-- عدد العمليات حسب الموقع -->
+<div style="width: 500px; border: 2px solid;">
+  <app-range-bar [colors]="['#03A677']"  selectedColor="#FDBE4A" [seriesData]="NumberOfOperationsByLocationSeriesData"></app-range-bar>
+</div>
+
+<div style="width: 500px; border: 2px solid;">
+  <app-shfaf [chartData]="City" [yAxisData]="NumberOfOperationsByLocationSeries"  
+  columnWidth="6px" [borderRadius]=3 [colors]="['#2AC064']" [isSelectedDataLabelAppear]=true selectedColor="#FDBE4A" dataLabelColor="#FFF" dataLabelTextColor="#1C1C1C"
+  [appearAllDataLabelInSelect]=true [dataLabelAppear]=true  [isAppearnotKyAxis]=true
+  ></app-shfaf>
+</div>
 
 
+<!-- عدد المركبات حسب سنة الصنع -->
+<div class="fullComponent">
+<div style="border: 2px solid; width: 430px; height: 140;">
+<app-shfaf [chartData]="Months" [yAxisData]="NumberOfVehiclesByYearOfManufactureSeries" 
+columnWidth="33px" [borderRadius]=16 [colors]="['#CAEFD8']"selectedColor="#03A676"
+[dataLabelAppear]= false  xAxisTitle="الفئة العمرية"></app-shfaf>
+</div>
+</div>
+
+
+<div style="border: 2px solid red; margin: 15px;">
+    <app-statistics-vehicles></app-statistics-vehicles>
+</div>
 

@@ -28,6 +28,13 @@
 * {
     color: black !important;
 }
-
+.fullComponent {
+ /* width: 515px; */
+ height: 302px;   
+ border-radius: 24px;
+border: 1px solid #EEE;
+background: #FFF;
+box-shadow: 0px 0px 4px 0px rgba(68, 68, 68, 0.10);
+}
 
  

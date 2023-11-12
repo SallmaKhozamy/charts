@@ -1,0 +1,4 @@
+::ng-deep .apexcharts-series {
+    display: flex !important;
+    flex-direction: column !important;
+}

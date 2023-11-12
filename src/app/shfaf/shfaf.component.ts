@@ -10,7 +10,6 @@ import { Colors } from 'chart.js';
   styleUrls: ['./shfaf.component.css']
 })
 export class ShfafComponent implements OnInit{
-  dataLabelValue: string = 'عدد الحوادث <br>';
   @Input() chartData: string[]= ["فيحاء"," الدرعة","الدمام ","الرياض","جدة","حائل","الباحة"]; 
   @Input() nameOfSeries: string = 'العدد' 
   @Input() columnWidth: string = '15px' 
@@ -18,7 +17,6 @@ export class ShfafComponent implements OnInit{
   @Input() borderRadiusApplication: "around" | "end" = 'around'
   @Input() colors:string[]= ['#03A677']
   @Input() yAxisData:any= []
-  // @Input() yAxisData2:string[] = []
   @Input() selectedColor:string | string[] = this.colors
   @Input() chartHeight: string | number = 250
   @Input() chartWidth:number | string = '100%'
@@ -36,8 +34,12 @@ export class ShfafComponent implements OnInit{
   @Input() gridYaxis:boolean = true
   @Input() xAxisType:"category" | "datetime" | "numeric" ='category'
   @Input() appearAllDataLabelInSelect:boolean = false
-  @Input() isAppearDiffYAxis:boolean = true
-  // @Input() dataLabelValue:string = 'عدد الحوادث'
+  @Input() isAppearnotKyAxis:boolean = false
+  @Input() blueDataLabel:boolean = true
+  @Input() whiteDataLabel:boolean = false
+  @Input() dataLabelValue:string = 'عدد الحوادث'
+  @Input() dataLabelTextColor:string = '#FFF'
+
   chartOptions!: ApexOptions; 
   ngOnInit(): void {
     
@@ -47,33 +49,64 @@ export class ShfafComponent implements OnInit{
         type: 'bar',
         width: this.chartWidth,
         height: this.chartHeight,
-        offsetX: -30,
+        // offsetX: -60,
         parentHeightOffset:0,
         toolbar:{show: false},
         events: {
           click:(event, chartContext, config)=> {
           let selectedcolumn = config.dataPointIndex
+
+          console.log("salma");
+          
           if(this.isSelectedExecute) [
             chartContext.updateOptions ({
               colors: selected(selectedcolumn,chartContext.w.globals.labels.length,this.colors,this.selectedColor)}, false, false) 
           ]
+
               // Disable data labels for all columns except the clicked one
-              chartContext.updateOptions({
-                dataLabels: {
-                  enabled: true,
-                  formatter: (val: any, { seriesIndex, dataPointIndex }: any)=> {
-                   if(this.appearAllDataLabelInSelect){
-                    return  val.toFixed(3);
-                   }else{
-                    if (dataPointIndex === selectedcolumn && this.isSelectedDataLabelAppear) {
-                      return  val.toFixed(3); // Display the data label only for the clicked column
-                    } else {
-                      return ''; // Hide data labels for other columns
+              if(this.blueDataLabel)
+              {
+                chartContext.updateOptions({
+                  dataLabels: {
+                    enabled: true,
+                    formatter: (val: any, { seriesIndex, dataPointIndex }: any)=> {
+                     if(this.appearAllDataLabelInSelect){
+                      return  val.toFixed(3);
+                     }else{
+                      if (dataPointIndex === selectedcolumn && this.isSelectedDataLabelAppear) {
+                        return  val.toFixed(3); // Display the data label only for the clicked column
+                      } else {
+                        return ''; // Hide data labels for other columns
+                      }
+                     }
                     }
-                   }
                   }
-                }
-              },false,false);
+                },false,false);
+              }
+              if(this.whiteDataLabel){
+                chartContext.updateOptions({
+                  dataLabels: {
+                    enabled: true,
+                    style:{
+                      colors:['#FFF']
+                    },
+                    background: {
+                      foreColor: '#1C1C1C',
+                    },
+                    formatter: (val: any, { seriesIndex, dataPointIndex }: any)=> {
+                     if(this.appearAllDataLabelInSelect){
+                      return  val.toFixed(3);
+                     }else{
+                      if (dataPointIndex === selectedcolumn && this.isSelectedDataLabelAppear) {
+                        return "عدد الحوادث : " + val.toFixed(3); // Display the data label only for the clicked column
+                      } else {
+                        return ''; // Hide data labels for other columns
+                      }
+                     }
+                    }
+                  }
+                },false,false);
+              }
           },
         },
 
@@ -148,11 +181,10 @@ export class ShfafComponent implements OnInit{
         labels:{
           offsetX: -24,
           formatter: (value: any) => {
-              if(this.isAppearDiffYAxis){
-              return value + 'K';
+              if(this.isAppearnotKyAxis){
+                return value.toFixed(0)
             }
-             return this.yAxisData
-            
+            return value + 'K';
             },
         
           style:{
@@ -216,15 +248,15 @@ export class ShfafComponent implements OnInit{
        offsetX: 0,
        offsetY: -24,
        style: {
-           fontSize: '12px',
+           fontSize: '13px',
            fontFamily: 'Tajawal',
-           fontWeight: '500',
+           fontWeight: '600',
           //  colors:['#027180']
           colors: [this.dataLabelColor]
        },
        background: {
          enabled: true,
-         foreColor: '#fff',
+         foreColor: this.dataLabelTextColor,
          borderRadius: 7,
           borderColor:'',
          padding: 12,
@@ -235,7 +267,7 @@ export class ShfafComponent implements OnInit{
            left: 1,
            blur: 7,
            color: '#00000026',
-           opacity: 0.6
+           opacity: 0.5
          },
        },
    

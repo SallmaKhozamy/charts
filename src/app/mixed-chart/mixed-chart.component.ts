@@ -8,69 +8,163 @@ import { selected } from '../interface/ichart-color';
   styleUrls: ['./mixed-chart.component.css']
 })
 export class MixedChartComponent implements OnInit{
-  @Input() chartData: string[]= ["فيحاء"," الدرعة","الدمام ","الرياض","جدة","حائل","الباحة"]; 
-  @Input() nameOfSeries: string = 'العدد' 
-  @Input() columnWidth: string = '15px' 
-  @Input() borderRadius: number = 6
+  @Input() series:{name:string,type:string,data:number[],color?:string}[] = [
+    {
+      name: "النسبة المئوية",
+      type: "column",
+      data: [40, 70, 50, 80, 100],
+      // color:'#01A365',
+    },
+    {
+      name: "عدد العمليات",
+      type: "line",
+      data: [10.116, 8.236, 5.756, 7.456, 4.421],
+      // color:'#FDBE4A',
+    }
+  ]
+
+  @Input() labels:string[] = ['مرور الرياض مرك','مرور شمال الرياض','مرور شرق الرياض','بوابة الوزارة','مرور الروضة'] 
+  @Input() columnWidth:string = '38px'
+  @Input() borderRadius:number = 17
   @Input() borderRadiusApplication: "around" | "end" = 'around'
-  @Input() colors:string[]= ['#03A677']
-  @Input() yAxisData:number[] = []
-  @Input() yAxisData2:string[] = []
-  @Input() selectedColor:string | string[] = this.colors
-  @Input() chartHeight: string | number = 250
-  @Input() chartWidth:number | string = '100%'
-  @Input() dataLabelAppear:boolean = false
-  @Input() yAxisTitle: string = ''
-  @Input() isSelectedDataLabelAppear=false
-  @Input() xAxisTitle: string = '' 
-  @Input() dataLabelColor: string = '#027180'
   @Input() isSelectedExecute:boolean = true
-  @Input() xAxisBorder = false
-  @Input() yAxisBorder = false
-  @Input() gridColor:string = '#DCDCDC'
-  @Input() gridDash:number = 5
-  @Input() gridXaxis:boolean = false
-  @Input() gridYaxis:boolean = true
-  @Input() xAxisType:"category" | "datetime" | "numeric" ='category'
-  @Input() appearAllDataLabelInSelect:boolean = false
-  @Input() isAppearDiffYAxis:boolean = true
+  @Input() colors:any[]= ['#01A365','#FDBE4A']
+  @Input() selectedColor:string = "#CB0606"
+
   chartOptions!: ApexOptions;
   ngOnInit(): void {
+    // let defaultColor= this.colors[0];
+  
     this.chartOptions  = { 
-      chart:{
-        type: 'bar',
-        width: this.chartWidth,
-        height: this.chartHeight,
-        offsetX: -30,
+      series: this.series,
+      colors: this.colors,
+      chart: {
+        // height: 350,
+        type: "line",
         parentHeightOffset:0,
-        toolbar:{show: false},
-        events: {
-          click:(event, chartContext, config)=> {
-          let selectedcolumn = config.dataPointIndex
-          if(this.isSelectedExecute) [
-            chartContext.updateOptions ({
-              colors: selected(selectedcolumn,chartContext.w.globals.labels.length,this.colors,this.selectedColor)}, false, false) 
-          ]
-              // Disable data labels for all columns except the clicked one
-              chartContext.updateOptions({
-                dataLabels: {
-                  enabled: true,
-                  formatter: (val: any, { seriesIndex, dataPointIndex }: any)=> {
-                   if(this.appearAllDataLabelInSelect){
-                    return  val.toFixed(3);
-                   }else{
-                    if (dataPointIndex === selectedcolumn && this.isSelectedDataLabelAppear) {
-                      return  val.toFixed(3); // Display the data label only for the clicked column
-                    } else {
-                      return ''; // Hide data labels for other columns
-                    }
-                   }
-                  }
-                }
-              },false,false);
+        toolbar: {
+          show: false // Set this to false to hide the toolbar
+        },
+        zoom: {
+          enabled:false
+        },
+      //   events: {
+      //     click:(event, chartContext, config)=> {
+      //     let selectedcolumn = config.dataPointIndex;
+      //     console.log(chartContext);
+          
+      //     if(this.isSelectedExecute) [
+      //       chartContext.updateOptions ({
+      //         colors: ['#CB0606','#FDBE4A']}, false, false) 
+              
+      //     ]
+      //   },
+      // },
+      },
+      stroke: {
+        width: [0, 5],
+        curve: "smooth",
+      },
+      dataLabels: {
+        enabled: true,
+        enabledOnSeries: [1]
+      },
+      labels: this.labels,
+      xaxis: { 
+        labels: {    
+          trim: true, 
+          hideOverlappingLabels: false,
+          rotate: 0,
+          style: {
+            colors: ['#000'],
+            fontFamily:'Tajawal',
+            fontSize: '14px',
+            fontWeight: 400, 
+          }
+        },
+       axisTicks: {
+        show:false,
+       },    
+       tooltip: {
+        enabled: false,
+        },
+        crosshairs:{
+          show:false,
+       },
+      },
+      yaxis: [
+        {
+          tickAmount: 8,
+          labels: {
+              offsetX: -29,
+              formatter: function (value: any) {
+              // Customize the y-axis label format here
+              return value.toFixed(0) + '%';
+            },
+            style: {
+              colors: '#292D30',
+              fontSize: '14px',
+              fontFamily: 'Tajawal',
+              fontWeight: 400,
+            }
+          },
+          
+        },
+        {
+         opposite: true,
+         labels:{
+          offsetX: -29,
+          formatter: function (value: any) {
+            return value.toFixed(0);
+          },
+          style: {
+            colors: '#292D30',
+            fontSize: '14px',
+            fontFamily: 'Tajawal',
+            fontWeight: 400,
+          },
+         },
+        
+        }
+      ],
+      plotOptions:{
+        bar:{
+          columnWidth: this.columnWidth,
+          // barHeight: '130.042px',
+          // distributed:true,
+          borderRadius: this.borderRadius,
+          borderRadiusApplication: this.borderRadiusApplication,
+          dataLabels: {
+            position: "top", // top, center, bottom
           },
         },
-      }
+      },
+      grid: {
+        // Customize the grid lines
+        borderColor: '#E0E0E0', // Color of the grid lines
+        strokeDashArray: 4,     // Length of dashes in the line
+      },
+      legend:{
+        show:false
+      },
+      markers: {
+        size: 3.3,
+        // colors: this.markerColor,
+        shape: "circle",
+        radius: 2,
+        offsetX: 0,
+        offsetY: 0,
+        hover: {
+          size: 6,
+      },
+        // strokeDashArray: 10,
+        onClick(e: any): void {
+          e.preventDefault
+        },
+        onDblClick(e: any): void {
+          e.preventDefault
+        }
+    },
     }
   }
   

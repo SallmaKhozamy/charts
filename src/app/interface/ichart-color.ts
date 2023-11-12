@@ -34,15 +34,18 @@ export const labelColor:any=(chartOptionName:any,minMaxColor:string='#F1B547',de
   };
 
  export const selected = (clickedColumnIndex:number,chartLength:number,defaultColor:any,selectedColor:any) => {
-let color=[''] 
- color.length=chartLength
-for(let i=0;i<color.length;i++){
-  color[i]= defaultColor[i]
-} 
-color[clickedColumnIndex]=selectedColor
+let color=['']  
+console.log(defaultColor);
 
+color.length=chartLength
+
+  for(let i=0;i<color.length;i++){
+    color[i]= defaultColor[i];
+    // color.push(defaultColor)
+  } 
+
+color[clickedColumnIndex]=selectedColor
  console.log(color);
- 
     return color
    } 
 function f(){
